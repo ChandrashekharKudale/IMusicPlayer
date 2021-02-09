@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">IMusicPlayer</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="song_list_fragment_label">Song List Fragment</string>
+    <string name="song_details_fragment_label">Song Details Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="playing_song" translatable="false">&lt;b>%1s&lt;/b>&lt;br/>%2s</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="str_playlist">Playlist</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="release_date">Release Date</string>
+    <string name="_0_39">0:39</string>
+    <string name="price_5_81">Price:$5.81</string>
+    <string name="song_description">Song description</string>
+    <string name="song_name">Song name</string>
+    <string name="rights">Rights</string>
+
+</resources>

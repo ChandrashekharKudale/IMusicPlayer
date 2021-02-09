@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/SongListFragment">
+
+    <fragment
+        android:id="@+id/SongListFragment"
+        android:name="com.bg.imusicplayer.data.view.MusicListFragment"
+        android:label="@string/song_list_fragment_label"
+        tools:layout="@layout/fragment_music_list">
+
+        <action
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SongDeatilsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/SongDeatilsFragment"
+        android:name="com.bg.imusicplayer.data.view.MusicDetailsFragment"
+        android:label="@string/song_details_fragment_label"
+        tools:layout="@layout/fragment_music_details">
+
+        <action
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/SongListFragment" />
+    </fragment>
+</navigation>

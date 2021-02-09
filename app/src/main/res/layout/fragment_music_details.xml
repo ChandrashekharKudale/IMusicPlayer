@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <data>
+        <variable
+            name="musicModel"
+            type="com.bg.imusicplayer.data.model.obj.Entry" />
+
+        <variable
+            name="viewModelDetail"
+            type="com.bg.imusicplayer.data.viewmodel.SongDetailsViewModel" />
+
+        <variable
+            name="imusicUtils"
+            type="com.bg.imusicplayer.data.utils.IMusicUtils" />
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/app_background_color">
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400dp"
+            android:alpha="9"
+            android:scaleType="fitXY"
+            app:imageUrl="@{musicModel.image.get(2).label}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/song_name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24dp"
+            android:layout_marginTop="80dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:hint="@string/song_name"
+            android:text="@{musicModel.name.label}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_field_color"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2" />
+
+        <TextView
+            android:id="@+id/song_desc_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_24dp"
+            android:fontFamily="sans-serif-condensed-light"
+            android:hint="@string/song_description"
+            android:text="@{musicModel.artist.label}"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColorHint="@color/app_field_color"
+
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/song_name_textview" />
+
+        <TextView
+            android:id="@+id/song_price_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_324dp"
+            android:layout_marginTop="@dimen/_356dp"
+            android:fontFamily="sans-serif"
+            android:hint="@string/price_5_81"
+            android:text="@{musicModel.price.label}"
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_field_color"
+            app:layout_constraintStart_toStartOf="@id/imageView2"
+            app:layout_constraintTop_toTopOf="@id/imageView2" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/imageView3"
+            android:layout_width="@dimen/_200dp"
+            android:layout_height="@dimen/_200dp"
+            android:layout_marginTop="136dp"
+            android:layout_marginEnd="16dp"
+            app:image="@{musicModel.title.label}"
+            app:layout_constraintEnd_toStartOf="@+id/song_price_textview"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/seekBar2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_16dp"
+            android:layout_marginTop="@dimen/_64dp"
+            android:layout_marginRight="@dimen/_16dp"
+            android:hint="@string/rights"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textColor="@color/white"
+            android:text="@{musicModel.rights.label}"
+            android:ellipsize="marquee"
+            android:textColorHint="@color/white"
+            android:textSize="@dimen/text_size_16sp"
+            android:fontFamily="sans-serif-condensed-medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="@dimen/_124dp"
+            android:layout_height="@dimen/_124dp"
+            android:onClick="@{(view) -> viewModelDetail.playSong(musicModel.link.get(1).attributes.href,view)}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+            app:layout_constraintVertical_bias="0.293"
+            tools:srcCompat="@drawable/ic_play" />
+        <!-- app:srcCompat="@drawable/ic_play"-->
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+
+            app:layout_constraintVertical_bias="0.35"
+            app:srcCompat="@android:drawable/ic_media_next"
+            app:tint="@color/app_field_color" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageView4"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/seekBar2"
+            app:layout_constraintVertical_bias="0.35"
+            app:srcCompat="@android:drawable/ic_media_previous"
+            app:tint="@color/app_field_color" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="imageView5,imageView6,imageView4" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/now_playing"
+
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_field_color"
+            android:textSize="18sp"
+            android:textStyle="italic|bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:textColor="@color/white"
+            android:textColorHint="@color/app_field_color"
+            android:hint="@string/_0_39"
+            android:text="@{imusicUtils.getSongDuration(musicModel.link.get(1).duration.label)}"
+            android:fontFamily="sans-serif-condensed-light"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="16sp"
+            app:layout_constraintHorizontal_bias="0.067"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/song_desc_textview" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@{imusicUtils.getDayName(musicModel.releaseDate.label)}"
+            android:hint="@string/release_date"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            android:textColorHint="@color/app_field_color"
+            android:fontFamily="sans-serif-condensed-light"
+            app:layout_constraintBottom_toTopOf="@+id/seekBar2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.045"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView2"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
